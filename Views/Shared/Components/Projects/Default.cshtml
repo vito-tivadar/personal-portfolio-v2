@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ProjectDto>
+
+<div class="projects-list">
+    @foreach (var project in Model)
+    {
+        @await Html.PartialAsync("_ProjectCard", project)
+    }
+</div>

@@ -1,0 +1,59 @@
+﻿@*
+    <img src="/assets/vt_primary.svg" class="navbar_logo-icon"  style="height: 1em;">
+*@
+
+<header class="navbar">
+    <div class="navbar_inner">
+        <!-- Logo -->
+        <a href="#" class="navbar_logo">
+            <img src="/assets/vt_primary.svg" class="navbar_logo-icon" style="height: 1em;">
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="navbar_nav">
+            <a href="@Url.Action("Index", "Home")#home" class="navbar_link">About Me</a>
+            <a href="@Url.Action("Index", "Home")#skills" class="navbar_link">Skills</a>
+            <a href="@Url.Action("Index", "Home")#projects" class="navbar_link">Projects</a>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <a href="@Url.Action("Index", "Home")#contact" class="btn btn--primary btn--outline navbar_cta--desktop">
+            <i class="ti ti-mail-forward"></i>
+            Contact
+        </a>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="navbar_toggle" id="navbar-toggle" aria-label="Open menu">
+            <i class="ti ti-menu-2"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Overlay -->
+<div class="drawer_overlay" id="drawer-overlay"></div>
+
+<!-- Side Drawer -->
+<div class="drawer" id="drawer">
+    <div class="drawer_header">
+        <a href="#" class="navbar_logo drawer_logo">
+            <img src="/assets/vt_primary.svg" class="navbar_logo-icon" style="height: 1em;">
+        </a>
+        <button class="drawer_close" id="drawer-close" aria-label="Close menu">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+
+    <nav class="drawer_nav">
+        <a href="@Url.Action("Index", "Home")#home" class="drawer_link">About Me</a>
+        <a href="@Url.Action("Index", "Home")#skills" class="drawer_link">Skills</a>
+        <a href="@Url.Action("Index", "Home")#projects" class="drawer_link">Projects</a>
+    </nav>
+
+    <div class="drawer_cta">
+
+        <a href="@Url.Action("Index", "Home")#contact" class="btn btn--primary btn--outline ">
+            <i class="ti ti-mail-forward"></i>
+            Contact
+        </a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model List<Skill>
+
+@{
+    void RenderTrack(List<Skill> row)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            foreach (var skill in row)
+            {
+                <div class="card skill"
+                     style="--accent:@(skill.Accent)@(skill.AccentInteinsityHex); --glow:@(skill.Accent)30">
+                    <img src="@skill.ImagePath" alt="@skill.Name" />
+                    <span>@skill.Name</span>
+                </div>
+            }
+        }
+    }
+}
+
+<div class="skills-section">
+    <div class="track-wrapper">
+        <div class="track track-ltr">
+            @{
+                RenderTrack(Model.Where(x => x.RowNumber == 1).ToList());
+            }
+        </div>
+    </div>
+
+    <div class="track-wrapper">
+        <div class="track track-rtl">
+            @{
+                RenderTrack(Model.Where(x => x.RowNumber == 2).ToList());
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+}

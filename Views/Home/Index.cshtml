@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section id="home" class="hero">
+    <div class="hero_content">
+        <h1 class="hero_title">
+            Hi, I am<br>
+            <span class="name">VITO TIVADAR</span>
+            @* <div class="variable-font" data-uppercase="true" data-text="Vito Tivadar"></div> *@
+        </h1>
+        <p class="hero_subtitle">
+            Frontend and backend development with focus on clean architecture and maintainable code.
+            <br />
+            Also working with embedded systems and automation projects.
+        </p>
+        <div class="hero_actions">
+            <a href="#projects" class="btn btn--primary">
+                <i class="ti ti-arrow-down"></i>
+                Browse My Projects
+            </a>
+            <a href="https://github.com/vito-tivadar" target="_blank" class="btn btn--ghost">
+                <i class="ti ti-brand-github"></i>
+                Github
+            </a>
+        </div>
+    </div>
+
+
+    <div class="hero_image-wrap">
+
+        <img src="/assets/images/portrait.png"
+             alt="Vito Tivadar"
+             class="hero_image" />
+
+        <div class="hero_image-glow"></div>
+    </div>
+
+    <!-- Decorative label bottom-right -->
+</section>
+
+<section id="skills" style="">
+    <h1>Skills</h1>
+    @await Component.InvokeAsync("Skills")
+</section>
+
+<section id="projects" style="">
+    <h1>Projects</h1>
+    @await Component.InvokeAsync("Projects")
+</section>
+
+@await Component.InvokeAsync("ContactForm")

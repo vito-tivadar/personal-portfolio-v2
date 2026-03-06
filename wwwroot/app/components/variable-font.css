@@ -1,0 +1,13 @@
+.variable-font {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+    .variable-font span {
+        padding: 0;
+        margin: 0;
+        font-weight: 400;
+        font-stretch: 100%;
+        text-rendering: optimizeSpeed;
+        display: inline-block;
+    }

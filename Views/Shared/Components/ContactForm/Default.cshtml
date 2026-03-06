@@ -1,0 +1,42 @@
+﻿<section id="contact" class="contact-section">
+    <div class="contact-inner">
+        <div class="contact-info">
+            <h2 class="contact-info__title">Contact</h2>
+            <p class="contact-info__text">
+                Got a question, an idea, or just want to chat about development or design? Feel free to reach out. I'm always open to interesting conversations and connecting with people in the tech and design community.
+            </p>
+            <div class="contact-details">
+@*                 <div class="contact-detail">
+                    <i class="ti ti-mail"></i>
+                    <span>Get in touch</span>
+                </div> *@
+                <div class="contact-detail">
+                    <i class="ti ti-clock"></i>
+                    <span>I usually respond within 24h</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-card card">
+            <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="contact-name" class="form-label">Name</label>
+                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name" required maxlength="100" />
+                </div>
+                <div class="form-group">
+                    <label for="contact-email" class="form-label">Email</label>
+                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="your@email.com" required maxlength="254" />
+                </div>
+                <div class="form-group">
+                    <label for="contact-message" class="form-label">Message</label>
+                    <textarea id="contact-message" name="message" class="form-input form-textarea" placeholder="Your message..." required minlength="10" maxlength="5000" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary contact-submit">
+                    <i class="ti ti-send"></i>
+                    Send Message
+                </button>
+                <div id="contact-status" class="contact-status" style="display:none;"></div>
+            </form>
+        </div>
+    </div>
+</section>

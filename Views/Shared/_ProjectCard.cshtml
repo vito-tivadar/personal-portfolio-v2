@@ -1,0 +1,40 @@
+﻿@model ProjectDto
+
+<a href="@Model.ViewUrl" id="@Model.Slug" class="project-row">
+    <div class="badge-container">
+        @for (int i = 0; i < Model.Badges.Count; i++)
+        {
+            string badgeClass = i == 0 ? "badge-start"
+                : i == Model.Badges.Count - 1 ? "badge-end"
+                : "badge-mid";
+
+            <div class="badge @badgeClass">
+                <div class="badge-content">@Model.Badges[i]</div>
+            </div>
+        }
+    </div>
+
+    <div class="project-start-block">
+        <div class="project-title">@Model.Title</div>
+    </div>
+
+    <div class="project-mid-block">
+        <div class="project-subtitle">@Model.Subtitle</div>
+        <div class="project-tags">
+            @foreach (var tag in Model.Tags)
+            {
+                <span class="tag">@tag</span>
+            }
+        </div>
+
+        <span class="corner-bracket">
+            <i class="ti ti-line-dashed"></i>
+            View
+            <i class="ti ti-arrow-narrow-right-dashed"></i>
+        </span>
+    </div>
+
+    <div class="project-end-block">
+        <img src="@Model.ImageUrl" alt="@Model.ImageAlt" />
+    </div>
+</a>

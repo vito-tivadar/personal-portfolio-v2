@@ -1,0 +1,95 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@{
+    var title = "Vito Tivadar";
+
+    if (!string.IsNullOrEmpty(ViewData["Title"]?.ToString()))
+    {
+        title += $" - {ViewData["Title"]}";
+    }
+
+    var gtmId = Configuration["GTM_ID"];
+    var hasGtm = !string.IsNullOrEmpty(gtmId);
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title</title>
+
+    @if (hasGtm)
+    {
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','@gtmId');</script>
+        <!-- End Google Tag Manager -->
+    }
+
+
+
+    <script type="importmap"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tabler/icons-webfont@@3.37.1/dist/tabler-icons.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/app/app.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/variable-font.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/card.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/card-skills.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/card-projects.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/footer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app/components/contact.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+<body>
+
+    @if (hasGtm)
+    {
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=@gtmId"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    }
+
+    <div class="bg"></div>
+    
+    @await Component.InvokeAsync("Navbar")
+    
+    <main class="container">
+
+    
+        @RenderBody()
+
+    </main>
+    
+    @await Component.InvokeAsync("Footer")
+    
+
+    <script asp-append-version="true" src="~/app/app.js" ></script>
+    <script asp-append-version="true" src="~/app/components/navbar.js"></script>
+    <script asp-append-version="true" src="~/app/components/variable-font.js"></script>
+    <script asp-append-version="true" src="~/app/components/contact.js"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

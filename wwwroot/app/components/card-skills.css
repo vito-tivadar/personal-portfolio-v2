@@ -1,0 +1,119 @@
+.skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.track-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+    .track-wrapper::before,
+    .track-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 120px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .track-wrapper::before {
+        left: 0;
+    }
+
+    .track-wrapper::after {
+        right: 0;
+    }
+
+.track {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-base);
+    width: max-content;
+    padding: var(--space-md) 0;
+}
+
+.track-ltr {
+    animation: scrollLTR 30s linear infinite;
+}
+
+.track-rtl {
+    animation: scrollRTL 30s linear infinite;
+}
+
+.track-wrapper:hover .track {
+    animation-play-state: paused;
+}
+
+@keyframes scrollLTR {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+@keyframes scrollRTL {
+    0% {
+        transform: translateX(-33.333%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+.card.skill {
+    gap: var(--space-md);
+    width: 110px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+    .card.skill::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 0%, var(--glow, #ffffff15) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .card.skill:hover {
+        border-color: var(--accent, #555);
+        background: #1c1c1c;
+        transform: scale(110%);
+    }
+
+        .card.skill:hover::before {
+            opacity: 1;
+        }
+
+    .card.skill img {
+        width: 3.25rem;
+        height: 3.25rem;
+        object-fit: contain;
+        filter: drop-shadow(0 0 8px var(--accent, transparent));
+    }
+
+    .card.skill span {
+        font-family: var(--font-mono);
+        font-size: 0.625rem;
+        letter-spacing: 0.12em;
+        color: var(--text-muted-solid);
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+
+    .card.skill:hover span {
+        color: #ccc;
+    }

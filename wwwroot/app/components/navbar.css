@@ -1,0 +1,258 @@
+/* ════════════════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════════════════ */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-height);
+    width: min(var(--container-width), 90%);
+    margin: 0 auto;
+    gap: var(--space-lg);
+}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.navbar_logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.navbar_logo-icon {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+    line-height: 1;
+    filter: drop-shadow(0 0 8px var(--primary-glow));
+    transition: filter 0.25s;
+}
+
+.navbar_logo:hover .navbar_logo-icon {
+    filter: drop-shadow(0 0 14px var(--primary-glow));
+}
+
+/* ── Desktop Nav Links ──────────────────────────────────── */
+.navbar_nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.navbar_link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+}
+
+    .navbar_link:hover {
+        color: var(--text-light);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .navbar_link.active {
+        color: var(--primary-color);
+        position: relative;
+    }
+
+        .navbar_link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: var(--primary-color);
+            box-shadow: 0 0 6px var(--primary-glow);
+        }
+
+/* ── CTA Button ─────────────────────────────────────────── */
+.navbar_cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: var(--space-sm) 1.25rem;
+    border: 1.5px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    letter-spacing: 0.02em;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+    .navbar_cta:hover {
+        background: var(--primary-color);
+        color: #fff;
+        box-shadow: 0 0 18px var(--primary-glow);
+    }
+
+.navbar_cta--desktop {
+    flex-shrink: 0;
+}
+
+/* ── Hamburger Toggle ───────────────────────────────────── */
+.navbar_toggle {
+    display: none; /* hidden on desktop */
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s, background 0.2s;
+    color: var(--text-light);
+}
+
+    .navbar_toggle:hover, .navbar_toggle:active {
+        color: var(--primary-color);
+    }
+
+/* ════════════════════════════════════════════════════════
+   DRAWER OVERLAY
+═══════════════════════════════════════════════════════════ */
+.drawer_overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+    .drawer_overlay.is-visible {
+        display: block;
+        opacity: 1;
+    }
+
+/* ════════════════════════════════════════════════════════
+   SIDE DRAWER
+═══════════════════════════════════════════════════════════ */
+.drawer {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    width: 100%;
+    height: 100dvh;
+    /* same glass as navbar */
+    background: rgba(8, 8, 8, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-block: var(--space-base);
+    padding-inline: 5%;
+    /* start off-screen to the left */
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+    .drawer.is-open {
+        transform: translateX(0);
+    }
+
+.drawer_header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: var(--space-base);
+}
+/* Close button */
+.drawer_close {
+    align-self: flex-end;
+    background: transparent;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    border: none;
+    color: var(--text-light);
+    font-size: 2rem;
+}
+
+    .drawer_close:hover, .drawer_close:active {
+        color: var(--primary-color);
+    }
+
+/* Drawer nav links */
+.drawer_nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    flex: 1; /* push CTA to bottom */
+}
+
+.drawer_link {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: var(--space-md) var(--space-base);
+    border-radius: var(--radius-md);
+    transition: color 0.2s, background 0.2s, padding-left 0.2s;
+}
+
+    .drawer_link:hover {
+        color: var(--text-light);
+        background: rgba(255, 255, 255, 0.06);
+        padding-left: 1.25rem;
+    }
+
+    .drawer_link.active {
+        color: var(--primary-color);
+        background: rgba(255, 90, 31, 0.08);
+    }
+/* CTA pinned to bottom */
+.drawer_cta {
+    margin-top: var(--space-lg);
+    justify-content: center;
+}
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .navbar_nav,
+    .navbar_cta--desktop {
+        display: none;
+    }
+
+    .navbar_toggle {
+        display: flex;
+    }
+}
